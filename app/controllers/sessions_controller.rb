@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 		else
 			message = "User not found"
 			flash[:warning] = message
-			redirect_to root_path
+			render "new"
 		end
 	end
 end

@@ -1,3 +1,6 @@
 <h1>
 <%= @user.name %>
+<% if @user.created_events.any? %>
+<%= @user.created_events %>
+<% end %>
 </h1>
