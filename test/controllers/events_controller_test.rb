@@ -1,24 +1,17 @@
 require 'test_helper'
 
 class EventsControllerTest < ActionDispatch::IntegrationTest
-  test "should get new" do
-    get events_new_url
-    assert_response :success
+  def setup
+    @event = events(:one)
   end
 
-  test "should get create" do
-    get events_create_url
-    assert_response :success
+  test "should redirect create when not logged in" do
+    assert_no_difference "Event.count" do
+      post events_path, params: {event: { name: "Test"}}
+    end
+    assert_redirected_to new_session_url
   end
 
-  test "should get index" do
-    get events_index_url
-    assert_response :success
-  end
 
-  test "should get show" do
-    get events_show_url
-    assert_response :success
-  end
 
 end

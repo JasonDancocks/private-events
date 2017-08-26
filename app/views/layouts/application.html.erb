@@ -7,12 +7,7 @@
   </head>
 
   <body>
-
-  <% if logged_in? %>
-  <%= current_user.name %>
-  <% end %>
-
-  <%= session[:user_id] %>
+  <%= render "layouts/header" %>
 
   <% flash.each do |message_type, message| %>
 		   <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>

@@ -11,6 +11,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   	assert_response :success
   end
 
+  test "should redirect show when not logged in" do
+  	get user_path(@user)
+  	assert_not flash.empty?
+  	assert_redirected_to new_session_url
+  end
+  
+
   
   
   
