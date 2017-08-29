@@ -1,8 +1,10 @@
 class Event < ApplicationRecord
 	belongs_to :creator, class_name: :User 
 
-	def created_by
-		creator_id = self.creator_id
-		creator = User.find(creator_id)
-	end
+	has_many :invitations, foreign_key: :attended_event_id
+	has_many :attendees, through: :invitations
+
+	scope :past, -> { where("date <= ?", Time.now)}
+	scope :upcoming, -> { where("date > ?", Time.now)}
+
 end
