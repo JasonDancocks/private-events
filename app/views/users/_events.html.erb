@@ -1,14 +1,50 @@
 
+<h2> Events </h2>
+
+<h3> Created  </h3>
+
 <% if @user.created_events.any? %>
 <ul>
 	<% @user.created_events.each do |e| %>
 	<li>
-		<%= link_to e.name, event_path(e) %>
+		<%= link_to e.name, e %>
 	</li>
 	<% end %>
 </ul>
 <% else %>
 <p> You have not created any events 
 	<%= link_to "New event", new_event_path %>
+</p>
+<% end %>
+
+<h4> Upcoming </h4>
+
+<% if @user.upcoming_events.any? %>
+<ul>
+	<% @user.upcoming_events.each do |e| %>
+	<li>
+		<%= link_to e.name, e %>
+	</li>
+	<% end %>
+</ul>
+<% else %>
+<p> You do not have any upcoming events
+	
+</p>
+<% end %>
+
+<h4> Previous </h4>
+
+<% if @user.previous_events.any? %>
+<ul>
+	<% @user.previous_events.each do |e| %>
+	<li>
+		<%= link_to e.name, e %>
+	</li>
+	<% end %>
+</ul>
+<% else %>
+<p> You have not attended any events
+	
 </p>
 <% end %>
